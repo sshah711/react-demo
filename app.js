@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 // const heading=React.createElement("h1",
 // {id:"heading"},
 // "hello sakshi shah")
@@ -18,7 +20,6 @@
  * 
  * 
  * 
- 
  */
 const heading = React.createElement("div",{id:"p"},
                         [ React.createElement("div",{id:"c"},
