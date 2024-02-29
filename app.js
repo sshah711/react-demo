@@ -28,7 +28,7 @@ const heading = React.createElement("div",{id:"p"},
                                  ),
                         React.createElement("div",{id:"c2"},
                                  [React.createElement("h1",{},"hello 3multiple"),
-                                 React.createElement("h2",{},"hello 4nd multiple")]
+                                 React.createElement("h2",{},"helloo 4nd multiple")]
                                  )
                                 ]
                                  )
