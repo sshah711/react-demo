@@ -32,7 +32,7 @@ color: rebeccapurple;
     width: 200px;
     /* height: 450px; */
    padding: 5px;
-   margin: 5px;
+   margin: 20px;
     background-color: rgb(197, 196, 196);
     /* margin: 5px; */
 }
@@ -51,4 +51,28 @@ color: rebeccapurple;
 .filter-btn{
     margin: 10px;
     cursor: pointer;
+}
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.shimmer-card{
+    margin: 20px;
+    width: 200px;
+    height: 400px;
+    
+    background-color: rgb(194, 189, 189);
+}
+/* .shimmer-text{
+
+    margin: 5px;
+    background-color: rgb(194, 189, 189);
+} */
+.login{
+    padding: 0 20px;
+    cursor: pointer;
+}
+.filter{
+    display: flex;
 }
