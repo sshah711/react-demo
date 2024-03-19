@@ -4,12 +4,13 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 //import resOBJ from "../constant/data";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
- 
+
   console.log("search");
   useEffect(() => {
     fetchData();
@@ -74,7 +75,10 @@ const Body = () => {
       </div>
       <div className="restaurant-con">
         {filter.map((r) => (
-          <RestaurantCard key={r.info.id} resData={r} />
+          <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
+            {" "}
+            <RestaurantCard resData={r} />
+          </Link>
         ))}
 
         {/* <RestaurantCard /> */}
