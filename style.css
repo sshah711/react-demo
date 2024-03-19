@@ -3,6 +3,8 @@ color: rebeccapurple;
 }
 .header{
     display: flex;
+    text-decoration:underline;
+    color:rebeccapurple ;
      justify-content:space-between ; 
      border: 1px solid black;
      
@@ -25,16 +27,24 @@ color: rebeccapurple;
 .restaurant-con{
     display: flex;
     flex-wrap: wrap;
+    text-decoration: none;
+    border-style: none;
     /* padding: 20px; */
   
 }
 .restaurant-card{
     width: 200px;
     /* height: 450px; */
+    
    padding: 5px;
    margin: 20px;
+   color: navy;
+   /* border-style: none; */
     background-color: rgb(197, 196, 196);
     /* margin: 5px; */
+}
+a:link{
+    text-decoration: none;
 }
 .restaurant-card:hover { 
     cursor: pointer;
@@ -75,4 +85,9 @@ color: rebeccapurple;
 }
 .filter{
     display: flex;
+}
+.user-card{
+    padding: 10px;
+    border:1px solid black;   
+    margin: 10px;
 }
