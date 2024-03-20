@@ -2,38 +2,28 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-//import resOBJ from "../constant/data";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../constant/useOnlineStatus";
+import useResCard from "../constant/useResCard";
 
 const Body = () => {
-  const [resList, setResList] = useState([]);
-  const [filter, setFilter] = useState([]);
+  // const [resList, setResList] = useState([]);
+  // const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
 
-  console.log("search");
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.21670&lng=72.68330&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    console.log(json);
+  const [resList, setResList] = useResCard([]);
+  const [fil, setFil] = useResCard([]);
 
-    //optional chaining
-    setResList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        You are not connected to the network. Please check your internet
+        connection....
+      </h1>
     );
-    setFilter(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-  //conditional rendering
-  // if (resList.length === 0) {
-  //   return <Shimmer />;
-  // }
+
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
@@ -54,7 +44,7 @@ const Body = () => {
               const resFil = resList.filter((res) =>
                 res.info.name.toLowerCase().includes(search.toLowerCase())
               );
-              setFilter(resFil);
+              setFil(resFil);
             }}
           >
             Search
@@ -66,15 +56,15 @@ const Body = () => {
             //logic
             // console.log("Button Clicked");
             //resList = resList.filter((res) => res.info.avgRating > 4);
-            setResList(resList.filter((res) => res.info.avgRating > 4.3));
-            console.log(resList);
+            setFil(resList.filter((res) => res.info.avgRating > 4.3));
+            //  console.log(resList);
           }}
         >
           Top Rated Restaurant
         </button>
       </div>
       <div className="restaurant-con">
-        {filter.map((r) => (
+        {fil.map((r) => (
           <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
             {" "}
             <RestaurantCard resData={r} />

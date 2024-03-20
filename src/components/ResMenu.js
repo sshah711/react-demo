@@ -1,23 +1,28 @@
 import React from "react";
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../constant/constantt";
+//import { MENU_API } from "../constant/constantt";
+import useResMenu from "../constant/useResMenu";
 const ResMenu = () => {
-  const [resMenu, setResMenu] = useState(null);
+  //const [resMenu, setResMenu] = useState(null);
 
   const { resId } = useParams();
-  // console.log(params);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_API + resId );
-    const json = await data.json();
+  //costom Hook
+  const resMenu = useResMenu(resId);
 
-    console.log(json);
-    setResMenu(json.data);
-  };
+  // console.log(params);
+
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
+  // const fetchMenu = async () => {
+  //   const data = await fetch(MENU_API + resId);
+  //   const json = await data.json();
+
+  //   console.log(json);
+  //   setResMenu(json.data);
+  // };
 
   if (resMenu === null) {
     return <Shimmer />;

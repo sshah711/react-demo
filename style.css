@@ -9,6 +9,9 @@ color: rebeccapurple;
      border: 1px solid black;
      
 }
+.os{
+    text-decoration:none;
+}
 .logo{
     width: 200px;
 }
