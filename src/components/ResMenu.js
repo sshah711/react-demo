@@ -35,6 +35,30 @@ const ResMenu = () => {
   console.log(itemCards);
   return (
     <div className="menu">
+      <h1 className="font-bold m-14 p-4 text-3xl">{name}</h1>
+
+      <p className="font-medium m-4  text-base">{cuisines.join(", ")}</p>
+      <p className="font-medium m-4  text-base">
+        {areaName} , {sla.lastMileTravel} km
+      </p>
+      <h3 className="font-medium m-4 text-xl">
+        {sla.deliveryTime} mins - {costForTwoMessage}
+      </h3>
+      <h3 className="font-bold m-4 text-xl">{avgRating} ⭐</h3>
+      <ul className="">
+        {itemCards.map((item) => (
+          <li className="font-medium m-4 p-4 text-xl" key={item.card.info.id}>
+            {item.card.info.name} <br/>
+            {" Rs."} 
+            {item.card.info.defaultPrice / 100 || item.card.info.price / 100}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+ /* return (
+    <div className="menu">
       <h1>{name}</h1>
 
       <p>{cuisines.join(", ")}</p>
@@ -54,7 +78,7 @@ const ResMenu = () => {
         ))}
       </ul>
     </div>
-  );
+  );*/
 };
 
 export default ResMenu;

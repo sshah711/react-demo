@@ -1,4 +1,8 @@
-#p {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* #p {
 color: rebeccapurple;
 }
 .header{
@@ -32,19 +36,18 @@ color: rebeccapurple;
     flex-wrap: wrap;
     text-decoration: none;
     border-style: none;
-    /* padding: 20px; */
-  
+   
 }
 .restaurant-card{
     width: 200px;
-    /* height: 450px; */
+   
     
    padding: 5px;
    margin: 20px;
    color: navy;
-   /* border-style: none; */
+ 
     background-color: rgb(197, 196, 196);
-    /* margin: 5px; */
+
 }
 a:link{
     text-decoration: none;
@@ -55,7 +58,7 @@ a:link{
 }
 .search{
     padding: 10px;
-    /* margin: 20px; */
+    
 }
 .res-logo{
     width: 100%;
@@ -77,11 +80,14 @@ a:link{
     
     background-color: rgb(194, 189, 189);
 }
+
 /* .shimmer-text{
 
     margin: 5px;
     background-color: rgb(194, 189, 189);
-} */
+}  */
+
+/*
 .login{
     padding: 0 20px;
     cursor: pointer;
@@ -93,4 +99,4 @@ a:link{
     padding: 10px;
     border:1px solid black;   
     margin: 10px;
-}
+} */

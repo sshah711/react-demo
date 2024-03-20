@@ -28,6 +28,61 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
+      <div className="filter flex ">
+        <div className="search m-4 p-4">
+          <input
+            type="text"
+            className="border border-solid border-black "
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+          <button
+            className="px-4 py-2 bg-blue-500 m-4 rounded-md font-medium text-xl hover:border border-solid border-black "
+            onClick={() => {
+              //console.log(search);
+              const resFil = resList.filter((res) =>
+                res.info.name.toLowerCase().includes(search.toLowerCase())
+              );
+              setFil(resFil);
+            }}
+          >
+            Search
+          </button>
+        </div>
+
+        <div className="search m-4 p-4 flex items-center">
+          <button
+            className="filter-btn px-4 py-2 bg-gray-400 m-4 rounded-md font-medium text-lg hover:border border-solid border-black "
+            onClick={() => {
+              //logic
+              // console.log("Button Clicked");
+              //resList = resList.filter((res) => res.info.avgRating > 4);
+              setFil(resList.filter((res) => res.info.avgRating > 4.3));
+              //  console.log(resList);
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
+      </div>
+      <div className="restaurant-con flex flex-wrap ">
+        {fil.map((r) => (
+          <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
+            {" "}
+            <RestaurantCard resData={r} />
+          </Link>
+        ))}
+
+        {/* <RestaurantCard /> */}
+      </div>
+    </div>
+  );
+
+  /*
+  (
+    <div className="body">
       <div className="filter">
         <div className="search">
           <input
@@ -71,9 +126,8 @@ const Body = () => {
           </Link>
         ))}
 
-        {/* <RestaurantCard /> */}
       </div>
     </div>
-  );
+  ); */
 };
 export default Body;
