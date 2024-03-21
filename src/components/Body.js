@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../constant/useOnlineStatus";
 import useResCard from "../constant/useResCard";
 
+// aggregatedDiscountInfoV3: Object { header: "60% OFF", subHeader: "UPTO ₹120" }
 const Body = () => {
   // const [resList, setResList] = useState([]);
   // const [filter, setFilter] = useState([]);
@@ -14,7 +15,7 @@ const Body = () => {
 
   const [resList, setResList] = useResCard([]);
   const [fil, setFil] = useResCard([]);
-
+ console.log("rendered",resList)
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false)
     return (
@@ -27,19 +28,24 @@ const Body = () => {
   return resList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter flex ">
-        <div className="search m-4 p-4">
+    <div className="body shadow-md">
+      <div className="filter flex justify-center  ">
+        <div className="search my-4 p-4">
           <input
-            type="text"
-            className="border border-solid border-black bg-gray-200"
+            type="text" placeholder="   Search for restaurant, cuisine or a dish"
+            
+            className="hover:bg-gray-200 border border-solid border-black rounded-md h-10 w-[870px] mr-[60px]"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
+              const resFil = resList.filter((res) =>
+                res.info.name.toLowerCase().includes(search.toLowerCase())
+              );
+              setFil(resFil);
             }}
           />
           <button
-            className="px-4 py-2 bg-blue-500 m-4 rounded-md font-medium text-xl hover:border border-solid border-black "
+            className="my-5 px-4 py-2 bg-gray-300  m-4 rounded-md font-medium text-xl hover:bg-blue-400"
             onClick={() => {
               //console.log(search);
               const resFil = resList.filter((res) =>
@@ -52,9 +58,9 @@ const Body = () => {
           </button>
         </div>
 
-        <div className="search m-4 p-4 flex items-center">
+        <div className="search  flex items-center">
           <button
-            className="filter-btn px-4 py-2 bg-gray-400 m-4 rounded-md font-medium text-lg hover:border border-solid border-black "
+            className="filter-btn p-2.5 bg-gray-300 rounded-md font-medium text-lg hover:bg-blue-400 "
             onClick={() => {
               //logic
               // console.log("Button Clicked");
@@ -67,7 +73,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="restaurant-con flex flex-wrap ">
+      <div className="restaurant-con flex flex-wrap justify-center shadow-lg ">
         {fil.map((r) => (
           <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
             {" "}

@@ -38,7 +38,7 @@ const Header = () => {
           </li>
 
           <button
-            className="login p-4 bg-gray-400 rounded-md cursor-pointer font-medium text-xl hover:bg-blue-400 hover:border border-solid border-black"
+            className="login p-4 bg-gray-300 rounded-md cursor-pointer font-medium text-xl hover:bg-blue-400"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
               // console.log(btnName);

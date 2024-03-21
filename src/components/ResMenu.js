@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 //import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 //import { MENU_API } from "../constant/constantt";
 import useResMenu from "../constant/useResMenu";
+import ResCategory from "./ResCategory";
 const ResMenu = () => {
   //const [resMenu, setResMenu] = useState(null);
-
+  const [showIndex, setShowIndex] = useState(null);
   const { resId } = useParams();
   //costom Hook
   const resMenu = useResMenu(resId);
@@ -32,32 +33,48 @@ const ResMenu = () => {
   const { itemCards } =
     resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
   // const { name } = resMenu?.cards[0]?.card?.card?.info;
-  console.log(itemCards);
+  console.log(resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  const categories =
+    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log(categories);
   return (
-    <div className="menu">
-      <h1 className="font-bold m-14 px-3 py-2 text-3xl">{name}</h1>
+    <div className="menu text-center">
+      <h1 className="font-bold m-6 px-3 py-2 text-3xl">{name}</h1>
 
       <p className="font-medium mx-8 my-2  text-lg">{cuisines.join(", ")}</p>
       <p className="font-medium mx-8 my-2  text-lg">
-        {areaName}  ,  {sla.lastMileTravel} km
+        {areaName} , {sla.lastMileTravel} km
       </p>
       <h3 className="font-medium mx-8 my-2  text-xl">
-        {sla.deliveryTime} mins  -  {costForTwoMessage}
+        {sla.deliveryTime} mins - {costForTwoMessage}
       </h3>
       <h3 className="font-bold mx-8 my-2  text-xl">{avgRating} ★</h3>
-      <ul className="p-2">
+      {/* <ul className="p-2">
         {itemCards.map((item) => (
           <li className="font-medium mx-8 my-2 text-xl" key={item.card.info.id}>
-            {item.card.info.name} <br className=" m-1 p-4"/>
-            {" Rs."} 
+            {item.card.info.name} <br className=" m-1 p-4" />
+            {" Rs."}
             {item.card.info.defaultPrice / 100 || item.card.info.price / 100}
           </li>
         ))}
-      </ul>
+      </ul> */}
+      {categories.map((cat, index) => (
+        //controlled component
+        <ResCategory
+          key={cat?.card?.card.title}
+          data={cat?.card?.card}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={()=>setShowIndex(index) }
+        />
+      ))}
     </div>
   );
 
- /* return (
+  /* return (
     <div className="menu">
       <h1>{name}</h1>
 
