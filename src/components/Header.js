@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div className="flex justify-between shadow-lg m-3 ">
       <div className="logo-con">
-        <img className="w-56" src={LOGO_URL} />
+        <img className="w-56 md:block" src={LOGO_URL} />
       </div>
       <div className="flex items-center justify-between ">
         <ul className="flex p-4 m-4 items-center ">
@@ -38,7 +38,7 @@ const Header = () => {
           </li>
 
           <button
-            className="login p-4 bg-gray-300 rounded-md cursor-pointer font-medium text-xl hover:border border-solid border-black"
+            className="login p-4 bg-gray-400 rounded-md cursor-pointer font-medium text-xl hover:bg-blue-400 hover:border border-solid border-black"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
               // console.log(btnName);

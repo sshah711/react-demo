@@ -32,7 +32,7 @@ const Body = () => {
         <div className="search m-4 p-4">
           <input
             type="text"
-            className="border border-solid border-black "
+            className="border border-solid border-black bg-gray-200"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
