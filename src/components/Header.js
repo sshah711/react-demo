@@ -24,19 +24,19 @@ const Header = () => {
           <li className="px-4 font-medium text-xl ">
             Online Status: {onlineStatus ? "✅" : "❌"}
           </li>
-          <li className="px-4 font-medium text-xl hover:underline cursor-pointer ">
+          <li className="px-4 font-medium text-xl cursor-pointer hover:text-blue-600 ">
             <Link to="/">Home</Link>
           </li>
-          <li className="px-4 font-medium text-xl hover:underline cursor-pointer ">
+          <li className="px-4 font-medium text-xl hover:text-blue-600 cursor-pointer ">
             <Link to="/about">About</Link>
           </li>
-          <li className="px-4 font-medium text-xl hover:underline cursor-pointer">
+          <li className="px-4 font-medium text-xl hover:text-blue-600 cursor-pointer">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="px-4 font-medium text-xl hover:underline cursor-pointer">
+          <li className="px-4 font-medium text-xl hover:text-blue-600 cursor-pointer">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-4 font-medium text-xl hover:underline cursor-pointer">
+          <li className="px-4 font-medium text-xl  hover:text-blue-600 cursor-pointer">
             <Link to="/cart">Cart</Link>
           </li>
 

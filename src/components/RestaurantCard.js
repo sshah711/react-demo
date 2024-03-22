@@ -16,7 +16,7 @@ const RestaurantCard = (props) => {
   const {loggedinUser} = useContext(UserContext);
   // console.log(resData);
   return (
-    <div className="restaurant-card min-h-[470px] min-w-[300px] m-4 p-4 w-[250px] rounded-lg bg-gray-300  hover:bg-zinc-400 hover:scale-95">
+    <div className="restaurant-card min-h-[500px] min-w-[300px] m-4 p-4 w-[250px] rounded-lg bg-gray-300 hover:scale-95">
       {/* <div className="restaurant-card inline-block relative" > */}
       <div className="relative">
         <h1 className="font-black absolute bg-gradient-to-r top-[168px] rounded-bl-lg from-black text-white text-2xl ">
@@ -37,9 +37,9 @@ const RestaurantCard = (props) => {
 
       <h3 className="font-bold py-4 text-2xl">{name} </h3>
       <h4 className=" text-lg"> {cuisines.join(", ")}</h4>
-      <h4 className="font-bold text-xl">{avgRating} ★</h4>
-      <h4 className=" text-lg"> {costForTwo}</h4>
-      <h4 className=" text-lg">{sla.deliveryTime} mins</h4>
+      <h4 className="font-bold text-xl">★ {avgRating} .  {sla.deliveryTime} mins</h4>
+      <h4 className=" text-lg"> {costForTwo} </h4>
+      <h4 className=" text-lg"></h4>
       <h4 className=" text-lg">User: {loggedinUser}</h4>
     </div>
 
