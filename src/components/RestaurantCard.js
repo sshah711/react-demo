@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CDN_URL } from "../constant/constantt";
+import UserContext from "../constant/UserContext";
 const RestaurantCard = (props) => {
   const { resData } = props;
+ 
   const {
     cloudinaryImageId,
     name,
@@ -11,25 +13,25 @@ const RestaurantCard = (props) => {
     costForTwo,
     aggregatedDiscountInfoV3,
   } = resData?.info;
-
+  const {loggedinUser} = useContext(UserContext);
   // console.log(resData);
   return (
-    <div className="restaurant-card min-h-[630px] min-w-[300px] m-4 p-4 w-[250px] rounded-lg bg-gray-300  hover:bg-zinc-400">
+    <div className="restaurant-card min-h-[470px] min-w-[300px] m-4 p-4 w-[250px] rounded-lg bg-gray-300  hover:bg-zinc-400 hover:scale-95">
       {/* <div className="restaurant-card inline-block relative" > */}
-      <div className="">
-      <h1 className="font-black absolute  bg-gradient-to-r from-black text-white  origin-bottom-left text-2xl ">
-        {aggregatedDiscountInfoV3?.header} &nbsp;
-        {aggregatedDiscountInfoV3?.subHeader}
-      </h1>
+      <div className="relative">
+        <h1 className="font-black absolute bg-gradient-to-r top-[168px] rounded-bl-lg from-black text-white text-2xl ">
+          {aggregatedDiscountInfoV3?.header} &nbsp;
+          {aggregatedDiscountInfoV3?.subHeader}
+        </h1>
       </div>
-      
 
-      <img
-        className="res-logo rounded-lg min-h-[330px] min-w-[250px]"
-        alt="res-logo"
-        src={CDN_URL + cloudinaryImageId}
-      />
-      
+      <div className="">
+        <img
+          className="res-logo rounded-lg h-[200px] w-[270px] "
+          alt="res-logo"
+          src={CDN_URL + cloudinaryImageId}
+        />
+      </div>
 
       {/* </div> */}
 
@@ -38,6 +40,7 @@ const RestaurantCard = (props) => {
       <h4 className="font-bold text-xl">{avgRating} ★</h4>
       <h4 className=" text-lg"> {costForTwo}</h4>
       <h4 className=" text-lg">{sla.deliveryTime} mins</h4>
+      <h4 className=" text-lg">User: {loggedinUser}</h4>
     </div>
 
     /*

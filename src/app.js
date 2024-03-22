@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
 import ResMenu from "./components/ResMenu";
+import UserContext from "./constant/UserContext";
 //import Grocery from "./components/Grocery";
 //lazy loading , chunking, code splitting
 
@@ -16,12 +17,24 @@ const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
 
 function App() {
-  <Header />;
+  const [userName, setUserName] = useState();
+  //authentication
+  useEffect(() => {
+    const data = {
+      name: "sakshi shah",
+    };
+    setUserName(data.name);
+  }, []);
+  //<Header />;
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedinUser: userName, setUserName }}>
+      <div className="app">
+      {/* <UserContext.Provider value={{ loggedinUser: "sshah" }}> */}
+        <Header />
+        {/* </UserContext.Provider> */}
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 }
 

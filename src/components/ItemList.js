@@ -2,7 +2,7 @@ import React from "react";
 import { CDN_URL } from "../constant/constantt";
 
 const ItemList = ({ items }) => {
-  console.log(items);
+ // console.log(items);
   return (
     <div>
       {/* <ul className="p-2"> */}
@@ -27,11 +27,11 @@ const ItemList = ({ items }) => {
 
           <div className=" w-3/12 p-4">
             
-            <div className="absolute">
-              <button className="p-2 rounded-lg inset-x-0 bottom-0 mx-11 bg-white shadow-lg "> Add+</button>
+          <div className="relative">
+            <button className="p-2 rounded-lg absolute top-[70px] mx-11 bg-white shadow-lg "> Add+</button>
             </div>
             <img
-              className=" w-full rounded-lg"
+              className=" h-[110px] w-[370px] rounded-lg"
               src={CDN_URL + item.card.info.imageId}
             />
           </div>
