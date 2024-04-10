@@ -9,6 +9,8 @@ import Error from "./components/Error";
 import Cart from "./components/Cart";
 import ResMenu from "./components/ResMenu";
 import UserContext from "./constant/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./constant/appStore";
 //import Grocery from "./components/Grocery";
 //lazy loading , chunking, code splitting
 
@@ -27,14 +29,16 @@ function App() {
   }, []);
   //<Header />;
   return (
-    <UserContext.Provider value={{ loggedinUser: userName, setUserName }}>
-      <div className="app">
-      {/* <UserContext.Provider value={{ loggedinUser: "sshah" }}> */}
-        <Header />
-        {/* </UserContext.Provider> */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore} >
+      <UserContext.Provider value={{ loggedinUser: userName, setUserName }}>
+        <div className="app">
+          {/* <UserContext.Provider value={{ loggedinUser: "sshah" }}> */}
+          <Header />
+          {/* </UserContext.Provider> */}
+          <Outlet />
+        </div>
+      </UserContext.Provider>{" "}
+    </Provider>
   );
 }
 

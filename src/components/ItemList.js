@@ -1,8 +1,13 @@
 import React from "react";
 import { CDN_URL } from "../constant/constantt";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../constant/cartSlice";
 const ItemList = ({ items }) => {
- // console.log(items);
+  // console.log(items);
+  const dispatch = useDispatch();
+  const handleItem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       {/* <ul className="p-2"> */}
@@ -26,9 +31,13 @@ const ItemList = ({ items }) => {
           </div>
 
           <div className=" w-3/12 p-4">
-            
-          <div className="relative">
-            <button className="p-2 rounded-lg absolute top-[70px] mx-11 bg-white shadow-lg "> Add+</button>
+            <div className="relative">
+              <button
+                className="p-2 rounded-lg absolute top-[70px] mx-11 bg-white shadow-lg hover:scale-90 hover:bg-blue-400 "
+                onClick={() => handleItem(item)}
+              >
+                Add+
+              </button>
             </div>
             <img
               className=" h-[110px] w-[370px] rounded-lg"

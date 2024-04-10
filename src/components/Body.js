@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../constant/useOnlineStatus";
 import useResCard from "../constant/useResCard";
@@ -30,11 +30,12 @@ const Body = () => {
     return <Shimmer />;
   }
   return (
-    <div className="body shadow-md">
+    <div data-testid="resCard" className="body shadow-md">
       <div className="filter flex justify-center  ">
         <div className="search my-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             placeholder="   Search for restaurant, cuisine or a dish"
             className="hover:bg-gray-200 border border-solid border-black rounded-md h-10 w-[470px] mr-[20px]"
             value={search}
@@ -86,7 +87,6 @@ const Body = () => {
       <div className="restaurant-con flex flex-wrap justify-center shadow-lg ">
         {fil.map((r) => (
           <Link key={r.info.id} to={"/restaurants/" + r.info.id}>
-            {" "}
             <RestaurantCard resData={r} />
           </Link>
         ))}
